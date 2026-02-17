@@ -38,34 +38,46 @@ It includes a **Spring Boot REST API** (backend) and an **Angular** application 
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
+```
 EmployeersApp/
 │
-├── employeemanager/ # Spring Boot Backend (REST API)
-│ ├── src/main/java/ # Java source code
-│ ├── src/main/resources/
-│ │ └── application.properties # Database configuration
-│ └── pom.xml # Maven configuration
+├── employeemanager/                  # Spring Boot Backend (REST API)
+│   ├── src/main/java/                # Java source code
+│   ├── src/main/resources/
+│   │   └── application.properties    # Database configuration
+│   └── pom.xml                       # Maven configuration
 │
-└── employeemanagerapp/ # Angular Frontend (UI)
-├── src/app/ # Angular components & services
-├── package.json # Node dependencies
-└── angular.json # Angular configuration
-
+└── employeemanagerapp/               # Angular Frontend (UI)
+    ├── src/app/                      # Angular components & services
+    ├── package.json                  # Node dependencies
+    └── angular.json                  # Angular configuration
+```
 
 ---
 
 ## Prerequisites
 
-Make sure you have the following installed:
 
-- **Java JDK** (21+ recommended, tested with 25)
-- **Maven** (or use the included Maven Wrapper `mvnw`)
-- **Node.js** (LTS recommended)
-- **Angular CLI**
-  ```bash
-  npm install -g @angular/cli
+---
+
+## 🛠 Prerequisites
+
+Make sure the following tools are installed before running the project:
+
+### Backend Requirements
+- ☕ **Java JDK 21+** (tested with Java 25)
+- 📦 **Maven** (or use the included Maven Wrapper `mvnw`)
+
+### Frontend Requirements
+- 🟢 **Node.js (LTS recommended)**
+- 🅰 **Angular CLI**
+
+Install Angular CLI globally:
+
+```bash
+npm install -g @angular/cli
 
 
 
