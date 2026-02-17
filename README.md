@@ -41,12 +41,17 @@ It includes a **Spring Boot REST API** (backend) and an **Angular** application 
 ## Project Structure
 
 EmployeersApp/
-├─ employeemanager/ # Spring Boot backend
-│ ├─ src/main/java/...
-│ └─ src/main/resources/application.properties
-└─ employeemanagerapp/ # Angular frontend
-├─ src/app/...
-└─ package.json
+│
+├── employeemanager/ # Spring Boot Backend (REST API)
+│ ├── src/main/java/ # Java source code
+│ ├── src/main/resources/
+│ │ └── application.properties # Database configuration
+│ └── pom.xml # Maven configuration
+│
+└── employeemanagerapp/ # Angular Frontend (UI)
+├── src/app/ # Angular components & services
+├── package.json # Node dependencies
+└── angular.json # Angular configuration
 
 
 ---
