@@ -81,9 +81,42 @@ npm install -g @angular/cli
 
 
 
-Database Setup (MySQL)
+Database Setup MySQL
 
 Start the MySQL Server.
 
 Create the database schema:
 CREATE DATABASE IF NOT EXISTS employeemanager;
+```
+
+---
+
+## 🐳 Running the Application with Docker
+
+You can run the entire project (Backend + Frontend + MySQL) using **Docker Compose**.
+
+### 1️⃣ Requirements
+
+Make sure you have:
+
+- Docker Desktop installed
+- Docker Engine running
+
+---
+
+### 2️⃣ Build and Start the Application
+
+From the root project folder (where `docker-compose.yml` exists), run:
+
+```bash
+docker compose up -d --build
+```
+You can stop it by doing 
+```bash
+docker compose stop
+```
+
+And start again
+```bash
+docker compose up start
+```
