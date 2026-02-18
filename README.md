@@ -1,4 +1,4 @@
-# Employee Manager (Spring Boot + Angular + MySQL)
+# Employee Manager (Spring Boot + Angular + MySQL + Docker Sync)
 
 A simple full‑stack CRUD application for managing employees.  
 It includes a **Spring Boot REST API** (backend) and an **Angular** application (frontend) connected to a **MySQL** database.
