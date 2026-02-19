@@ -1,122 +1,59 @@
-# Employee Manager (Spring Boot + Angular + MySQL + Docker Sync)
+# Employee Manager
 
-A simple full‑stack CRUD application for managing employees.  
-It includes a **Spring Boot REST API** (backend) and an **Angular** application (frontend) connected to a **MySQL** database.
+Spring Boot + Angular + MySQL app for employee CRUD.
 
----
+## Docker Run Guide
 
-## Features
+The project uses two compose files:
 
-- ✅ Create employee
-- ✅ Read/list employees
-- ✅ Update employee
-- ✅ Delete employee
-- ✅ REST API + Angular UI
-- ✅ MySQL persistence using Spring Data JPA/Hibernate
+- `docker-compose.api.yml` for `db` + `api`
+- `docker-compose.frontend.yml` for `frontend`
 
----
+### 1. Prerequisites
 
-## Tech Stack
+- Docker Desktop running
+- `.env` file in repo root with:
 
-### Backend
-- **Java** (tested with Java 25)
-- **Spring Boot 4**
-- **Spring Web (REST)**
-- **Spring Data JPA**
-- **Hibernate**
-- **MySQL Connector/J**
-- **Maven**
-
-### Frontend
-- **Angular** (standalone-style project structure)
-- **TypeScript**
-- **HttpClient / RxJS**
-- CSS (default Angular styling)
-
-### Database
-- **MySQL** (running locally on port `3306`)
-
----
-
-## 📁 Project Structure
-
-```
-EmployeersApp/
-│
-├── employeemanager/                  # Spring Boot Backend (REST API)
-│   ├── src/main/java/                # Java source code
-│   ├── src/main/resources/
-│   │   └── application.properties    # Database configuration
-│   └── pom.xml                       # Maven configuration
-│
-└── employeemanagerapp/               # Angular Frontend (UI)
-    ├── src/app/                      # Angular components & services
-    ├── package.json                  # Node dependencies
-    └── angular.json                  # Angular configuration
+```env
+MYSQL_ROOT_PASSWORD=your_password
+MYSQL_DATABASE=employeemanager
 ```
 
----
-
-## Prerequisites
-
-
----
-
-## 🛠 Prerequisites
-
-Make sure the following tools are installed before running the project:
-
-### Backend Requirements
-- ☕ **Java JDK 21+** (tested with Java 25)
-- 📦 **Maven** (or use the included Maven Wrapper `mvnw`)
-
-### Frontend Requirements
-- 🟢 **Node.js (LTS recommended)**
-- 🅰 **Angular CLI**
-
-Install Angular CLI globally:
+### 2. One-time setup (required by current compose files)
 
 ```bash
-npm install -g @angular/cli
-
-
-
-Database Setup MySQL
-
-Start the MySQL Server.
-
-Create the database schema:
-CREATE DATABASE IF NOT EXISTS employeemanager;
+docker network create employeemanager_shared
+docker volume create employeersapp_db_data
 ```
 
----
-
-## 🐳 Running the Application with Docker
-
-You can run the entire project (Backend + Frontend + MySQL) using **Docker Compose**.
-
-### 1️⃣ Requirements
-
-Make sure you have:
-
-- Docker Desktop installed
-- Docker Engine running
-
----
-
-### 2️⃣ Build and Start the Application
-
-From the root project folder (where `docker-compose.yml` exists), run:
+### 3. Start backend + database
 
 ```bash
-docker compose up -d --build
-```
-You can stop it by doing 
-```bash
-docker compose stop
+docker compose -f docker-compose.api.yml up -d --build
 ```
 
-And start again
+Backend API: `http://localhost:8080`
+
+MySQL exposed on host: `localhost:3307`
+
+### 4. Start frontend
+
 ```bash
-docker compose up start
+docker compose -f docker-compose.frontend.yml up -d --build
+```
+
+Frontend: `http://localhost:4200`
+
+### 5. Stop services
+
+```bash
+docker compose -f docker-compose.frontend.yml down
+docker compose -f docker-compose.api.yml down
+```
+
+### 6. Restart existing containers (without rebuild)
+
+```bash
+docker compose -f docker-compose.api.yml start
+docker compose -f docker-compose.frontend.yml start
 ```
