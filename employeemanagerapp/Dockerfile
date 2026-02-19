@@ -1,3 +1,4 @@
+# Build Angular app
 FROM node:22-bookworm-slim AS build
 WORKDIR /app
 
@@ -14,6 +15,7 @@ RUN mkdir -p /tmp/dist \
      else cp -R dist/employeemanagerapp/* /tmp/dist/; \
      fi
 
+#Serve with Nginx
 FROM nginx:1.27-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /tmp/dist/ /usr/share/nginx/html/

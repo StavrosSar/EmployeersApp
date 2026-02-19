@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+#starter.sh is the controller script that launches and stopes both sql and spring boot. 
 : "${MYSQL_ROOT_PASSWORD:?MYSQL_ROOT_PASSWORD must be set (use docker-compose.yml)}"
 
 echo "[api] Starting MySQL (background) using the official MySQL entrypoint..."
@@ -19,6 +20,7 @@ done
 echo "[api] Starting Spring Boot..."
 java -jar /app/app.jar &
 APP_PID=$!
+
 
 term_handler() {
   echo "[api] Shutting down..."

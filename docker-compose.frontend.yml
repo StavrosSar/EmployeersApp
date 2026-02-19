@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build: ./employeemanagerapp
+    container_name: employeemanager-frontend
+    ports:
+      - "4200:80"
+    networks:
+      - shared
+    restart: unless-stopped
+
+networks:
+  shared:
+    external: true
+    name: employeemanager_shared

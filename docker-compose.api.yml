@@ -1,0 +1,26 @@
+services:
+  api:
+    build: ./employeemanager
+    container_name: employeemanager-api
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - "8080:8080"
+      - "3307:3306"
+    volumes:
+      - employeersapp_db_data:/var/lib/mysql
+    networks:
+      shared:
+        aliases:
+          - api
+    restart: unless-stopped
+
+volumes:
+  employeersapp_db_data:
+    external: true
+
+networks:
+  shared:
+    external: true
+    name: employeemanager_shared
