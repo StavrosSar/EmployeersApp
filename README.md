@@ -2,6 +2,34 @@
 
 Spring Boot + Angular + MySQL app for employee CRUD.
 
+## Testing (JUnit 5 + Mockito)
+
+The backend test suite uses:
+
+- **JUnit 5** for test lifecycle and assertions
+- **Mockito** for mocking dependencies (for example, mocking `EmployeeRepo` or `EmployeeService`)
+
+Current backend test classes include:
+
+- `employeemanager/src/test/java/tech/getarrays/employeemanager/service/EmployeeServiceTest.java`
+- `employeemanager/src/test/java/tech/getarrays/employeemanager/EmployeeResourceTest.java`
+- `employeemanager/src/test/java/tech/getarrays/employeemanager/EmployeemanagerApplicationTests.java`
+- `employeemanager/src/test/java/tech/getarrays/employeemanager/model/EmployeeTest.java`
+
+Run backend tests:
+
+```bash
+cd employeemanager
+./mvnw test
+```
+
+On Windows PowerShell:
+
+```powershell
+cd employeemanager
+.\mvnw.cmd test
+```
+
 ## Docker Run Guide
 
 The project uses two compose files:
